@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mistress Predicament — Enquiry</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0c0c0c;
+      color: #ede8e0;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero image ──────────────────────────────────────────────
+       Use images/heels.jpg — Photo 2: the close-up lace-up platform
+       heels shot. Crop or let object-position do the work.
+    ───────────────────────────────────────────────────────────── */
+    .hero {
+      width: 100%;
+      height: 65vh;
+      max-height: 520px;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      display: block;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(12, 12, 12, 0.1) 0%,
+        rgba(12, 12, 12, 0.0) 40%,
+        rgba(12, 12, 12, 0.85) 100%
+      );
+    }
+
+    /* ── Layout ────────────────────────────────────────────────── */
+    .container {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 28px 100px;
+    }
+
+    /* ── Header ────────────────────────────────────────────────── */
+    .header {
+      padding-top: 52px;
+      padding-bottom: 48px;
+    }
+
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 7vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.08;
+      color: #ede8e0;
+      margin-bottom: 40px;
+    }
+
+    /* ── Intro text ────────────────────────────────────────────── */
+    .intro p {
+      font-size: 0.97rem;
+      color: #b8b0a6;
+      margin-bottom: 1.1em;
+      line-height: 1.8;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro strong {
+      color: #ede8e0;
+      font-weight: 400;
+    }
+
+    /* ── Image break ─────────────────────────────────────────────
+       Use images/restraint.jpg — Photo 1: the leather restraint
+       and lace-up heel shot. Crop to show buckle/strap detail.
+    ───────────────────────────────────────────────────────────── */
+    .image-break {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      margin: 52px 0;
+      position: relative;
+    }
+
+    .image-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    .image-break::before,
+    .image-break::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 60px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .image-break::before {
+      top: 0;
+      background: linear-gradient(to bottom, #0c0c0c, transparent);
+    }
+    .image-break::after {
+      bottom: 0;
+      background: linear-gradient(to top, #0c0c0c, transparent);
+    }
+
+    /* ── Form sections ─────────────────────────────────────────── */
+    .form-section {
+      padding: 40px 0;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .q-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .q-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #ede8e0;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .q-hint {
+      font-size: 0.8rem;
+      color: #555;
+      margin-bottom: 18px;
+      font-style: normal;
+      line-height: 1.6;
+    }
+
+    /* ── Inputs ────────────────────────────────────────────────── */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #2a2a2a;
+      color: #ede8e0;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.97rem;
+      padding: 11px 0;
+      outline: none;
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+      border-radius: 0;
+      caret-color: #ede8e0;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    textarea:focus {
+      border-bottom-color: #888;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #333;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    /* ── Contact fields grid ───────────────────────────────────── */
+    .contact-fields {
+      display: grid;
+      gap: 28px;
+    }
+
+    .contact-field label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #4a4a4a;
+      margin-bottom: 4px;
+    }
+
+    /* ── Submit ────────────────────────────────────────────────── */
+    .submit-wrap {
+      padding-top: 52px;
+      text-align: center;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .submit-btn {
+      background: #ede8e0;
+      color: #0c0c0c;
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 17px 56px;
+      cursor: pointer;
+      transition: background 0.2s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      background: #fff;
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .consent-text {
+      font-size: 0.75rem;
+      color: #3a3a3a;
+      margin-top: 28px;
+      line-height: 1.65;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Error ─────────────────────────────────────────────────── */
+    .error-banner {
+      display: none;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #c0392b;
+      text-align: center;
+    }
+
+    /* ── Success ───────────────────────────────────────────────── */
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .success-screen .success-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #ede8e0;
+      margin-bottom: 20px;
+    }
+
+    .success-screen p {
+      font-size: 0.92rem;
+      color: #666;
+    }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 20px 80px;
+      }
+      .hero {
+        height: 50vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    IMAGES — add these to an images/ folder in this repo:
+
+    images/heels.jpg      → Photo 2: the close-up lace-up platform heels on white bedding.
+                            Crop to show heels and lower legs only.
+
+    images/restraint.jpg  → Photo 1: the leather restraint + lace-up heel shot.
+                            Crop tightly to the buckle/strap detail against the white sheets.
+  -->
+
+  <div class="hero">
+    <img src="images/heels.jpg" alt="" aria-hidden="true">
+  </div>
+
+  <div class="container">
+
+    <header class="header">
+      <p class="eyebrow">Mistress Predicament</p>
+      <h1 class="title">Could you be my happy little slut?</h1>
+
+      <div class="intro">
+        <p>Welcome. I am Mistress Predicament.</p>
+        <p>I specialise in sensual, creative domination and intimate escort experiences. I take great pleasure in transforming true gentlemen into happy, devoted good boys.</p>
+        <p>Do you feel excited imagining what might happen after you press submit? Good. Tell me all about it.</p>
+        <p>Maybe your kinks and mine make us the perfect fit? If so, lucky us. If not, rest assured I won&rsquo;t leave you wondering and I will delete all of your data. My personal, equipment and data hygiene standards are tip top.</p>
+        <p>I read every submission, so make this one count. I will get back to you swiftly and privately, with my decision and next steps.</p>
+        <p>I do not negotiate on price but I do offer a chance to check chemistry and a refund of your deposit if you have any hesitations.</p>
+      </div>
+    </header>
+
+    <div class="image-break">
+      <img src="images/restraint.jpg" alt="" aria-hidden="true">
+    </div>
+
+    <form id="enquiry-form" novalidate>
+
+      <!-- 01 — Name -->
+      <div class="form-section">
+        <span class="q-number">01</span>
+        <label class="q-label" for="name">You may call me Mistress. What shall I call you?</label>
+        <input type="text" id="name" name="name" placeholder="Your name or how you wish to be known" required autocomplete="off">
+      </div>
+
+      <!-- 02 — Contact -->
+      <div class="form-section">
+        <span class="q-number">02</span>
+        <span class="q-label">Choose at least one secure way for me to reach you.</span>
+        <div class="contact-fields">
+          <div class="contact-field">
+            <label for="phone">Phone or WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+44 ...">
+          </div>
+          <div class="contact-field">
+            <label for="telegram">Telegram</label>
+            <input type="text" id="telegram" name="telegram" placeholder="@username">
+          </div>
+          <div class="contact-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+          <div class="contact-field">
+            <label for="other_contact">Other</label>
+            <input type="text" id="other_contact" name="other_contact" placeholder="Any other way to reach you">
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 — Source -->
+      <div class="form-section">
+        <span class="q-number">03</span>
+        <label class="q-label" for="source">How did you find me?</label>
+        <p class="q-hint">Optional — FetLife, Tryst, AdultWork, X, word of mouth, somewhere else entirely...</p>
+        <input type="text" id="source" name="source" placeholder="Tell me">
+      </div>
+
+      <!-- 04 — Excited by -->
+      <div class="form-section">
+        <span class="q-number">04</span>
+        <label class="q-label" for="excited_by">What excited you most about my profile?</label>
+        <textarea id="excited_by" name="excited_by" placeholder="Take your time with this one." required></textarea>
+      </div>
+
+      <!-- 05 — Hopes -->
+      <div class="form-section">
+        <span class="q-number">05</span>
+        <label class="q-label" for="hopes">What are your hopes from our time together?</label>
+        <p class="q-hint">One off session, something ongoing, virtual, escort, domination, a combination. Be as specific as you can.</p>
+        <textarea id="hopes" name="hopes" placeholder="Be as specific as you can. I want to understand exactly what you are imagining." required></textarea>
+      </div>
+
+      <!-- 06 — Limits -->
+      <div class="form-section">
+        <span class="q-number">06</span>
+        <label class="q-label" for="limits">What are your hard limits?</label>
+        <p class="q-hint">If you are not sure yet, please say so. We can discuss further when we speak.</p>
+        <textarea id="limits" name="limits" placeholder="Both matter — what you want and what is off the table." required></textarea>
+      </div>
+
+      <!-- 07 — Additional -->
+      <div class="form-section">
+        <span class="q-number">07</span>
+        <label class="q-label" for="additional">Anything further to add?</label>
+        <p class="q-hint">I welcome polite questions, secret fears and desperate pleas.</p>
+        <textarea id="additional" name="additional" placeholder="Optional."></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="submit-wrap">
+        <button type="submit" id="submit-btn" class="submit-btn">Submit</button>
+        <p class="error-banner" id="error-banner">Something went wrong. Please try again or reach out directly.</p>
+        <p class="consent-text">By submitting this form you confirm that you are over 18, that you have read the above, and that you consent to Mistress Predicament contacting you via the details you have provided.</p>
+      </div>
+
+    </form>
+
+    <!-- Shown after successful submission -->
+    <div class="success-screen" id="success-screen">
+      <p class="success-title">Thank you.</p>
+      <p>Your submission has been received.<br>I will be in touch swiftly and privately.</p>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Config ──────────────────────────────────────────────────
+    // Update this URL if your Vercel domain ever changes.
+    const API_URL = 'https://wacrm-ebon.vercel.app/api/leads';
+
+    // ── Elements ────────────────────────────────────────────────
+    const form       = document.getElementById('enquiry-form');
+    const submitBtn  = document.getElementById('submit-btn');
+    const errorBanner = document.getElementById('error-banner');
+    const successScreen = document.getElementById('success-screen');
+
+    // ── Submit ──────────────────────────────────────────────────
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const name          = document.getElementById('name').value.trim();
+      const phone         = document.getElementById('phone').value.trim();
+      const telegram      = document.getElementById('telegram').value.trim();
+      const email         = document.getElementById('email').value.trim();
+      const other_contact = document.getElementById('other_contact').value.trim();
+
+      if (!name) {
+        showError('Please tell me what to call you.');
+        document.getElementById('name').focus();
+        return;
+      }
+
+      if (!phone && !telegram && !email && !other_contact) {
+        showError('Please share at least one way for me to reach you.');
+        return;
+      }
+
+      hideError();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            phone,
+            telegram,
+            email,
+            other_contact,
+            source:     document.getElementById('source').value.trim(),
+            excited_by: document.getElementById('excited_by').value.trim(),
+            hopes:      document.getElementById('hopes').value.trim(),
+            limits:     document.getElementById('limits').value.trim(),
+            additional: document.getElementById('additional').value.trim(),
+          }),
+        });
+
+        if (!res.ok) throw new Error('Server returned ' + res.status);
+
+        form.style.display = 'none';
+        successScreen.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+        showError('Something went wrong. Please try again.');
+        console.error('[enquiry form]', err);
+      }
+    });
+
+    function showError(msg) {
+      errorBanner.textContent = msg;
+      errorBanner.style.display = 'block';
+    }
+
+    function hideError() {
+      errorBanner.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
