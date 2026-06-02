@@ -165,45 +165,6 @@
       margin-bottom: 0;
     }
 
-    /* ── Image break ─────────────────────────────────────────────
-       images/restraint.jpg — leather restraint + heel detail.
-       object-position pushes view lower to avoid chin.
-    ───────────────────────────────────────────────────────────── */
-    .image-break {
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-      margin: 52px 0;
-      position: relative;
-    }
-
-    .image-break img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 75%;
-      display: block;
-    }
-
-    .image-break::before,
-    .image-break::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 60px;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .image-break::before {
-      top: 0;
-      background: linear-gradient(to bottom, var(--bg), transparent);
-    }
-    .image-break::after {
-      bottom: 0;
-      background: linear-gradient(to top, var(--bg), transparent);
-    }
-
     /* ── Form sections ─────────────────────────────────────────── */
     .form-section {
       padding: 40px 0;
@@ -409,10 +370,6 @@
       </div>
     </header>
 
-    <div class="image-break">
-      <img src="images/restraint.jpg" alt="" aria-hidden="true">
-    </div>
-
     <form id="enquiry-form" novalidate>
 
       <!-- 01 — Name -->
@@ -510,6 +467,11 @@
   </div>
 
   <script>
+    // ── Your personal form token ────────────────────────────────
+    // Find this in Settings → Lead Form inside the CRM.
+    // The token is case-insensitive so it works however it is shared.
+    const FORM_TOKEN = 'YOUR_TOKEN_HERE';
+
     const API_URL = 'https://wacrm-ebon.vercel.app/api/leads';
 
     // ── Theme toggle ────────────────────────────────────────────
@@ -565,6 +527,7 @@
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
+            token: FORM_TOKEN,
             name,
             phone,
             telegram,
