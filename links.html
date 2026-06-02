@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +12,49 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg:     #0c0c0c;
+      --text:   #ede8e0;
+      --muted:  #888;
+      --border: #2a2a2a;
+    }
+
+    [data-theme="light"] {
+      --bg:     #f7f3ee;
+      --text:   #1a1514;
+      --muted:  #777;
+      --border: #d5cfc8;
+    }
+
     body {
-      background: #0c0c0c;
-      color: #ede8e0;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Jost', sans-serif;
       font-weight: 300;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.25s, color 0.25s;
     }
+
+    .theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 100;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
 
     .page {
       max-width: 480px;
@@ -54,14 +89,14 @@
       font-size: 1.6rem;
       font-weight: 300;
       font-style: italic;
-      color: #ede8e0;
+      color: var(--text);
       text-align: center;
       margin-bottom: 8px;
     }
 
     .tagline {
       font-size: 0.82rem;
-      color: #888;
+      color: var(--muted);
       text-align: center;
       letter-spacing: 0.06em;
       margin-bottom: 24px;
@@ -81,13 +116,13 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      border: 1px solid #2a2a2a;
-      color: #888;
+      border: 1px solid var(--border);
+      color: var(--muted);
       text-decoration: none;
       transition: border-color 0.2s, color 0.2s;
     }
 
-    .social-icon:hover { border-color: #888; color: #ede8e0; }
+    .social-icon:hover { border-color: var(--muted); color: var(--text); }
     .social-icon svg { width: 16px; height: 16px; fill: currentColor; }
 
     /* ── Link buttons ──────────────────────────────────────────── */
@@ -106,9 +141,9 @@
       gap: 10px;
       width: 100%;
       padding: 14px 20px;
-      border: 1px solid #2a2a2a;
+      border: 1px solid var(--border);
       background: transparent;
-      color: #ede8e0;
+      color: var(--text);
       font-family: 'Jost', sans-serif;
       font-weight: 400;
       font-size: 0.88rem;
@@ -119,8 +154,8 @@
     }
 
     .link-btn:hover {
-      border-color: #555;
-      background: rgba(255,255,255,0.04);
+      border-color: var(--muted);
+      background: rgba(128,128,128,0.06);
     }
 
     .link-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
@@ -157,18 +192,19 @@
       font-size: 1rem;
       font-style: italic;
       font-weight: 300;
-      color: #666;
+      color: var(--muted);
       text-align: center;
       text-decoration: none;
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
 
-    .cta-link:hover { color: #ede8e0; }
+    .cta-link:hover { color: var(--text); }
   </style>
 </head>
 
 <body>
+  <button class="theme-toggle" id="theme-toggle">Light</button>
   <div class="page">
 
     <!-- Profile -->
@@ -222,14 +258,14 @@
 
     </div>
 
-    <!-- Gallery — square crop, tighter -->
+    <!-- Gallery — square crop, tighter, linked to form -->
     <div class="gallery">
-      <div class="gallery-img">
+      <a href="https://yes-mistress.github.io/predicament-form/" target="_blank" rel="noopener noreferrer" class="gallery-img">
         <img src="images/Cuffs.jpg" alt="">
-      </div>
-      <div class="gallery-img">
+      </a>
+      <a href="https://yes-mistress.github.io/predicament-form/" target="_blank" rel="noopener noreferrer" class="gallery-img">
         <img src="images/dildos.jpg" alt="">
-      </div>
+      </a>
     </div>
 
     <!-- Footer CTA -->
@@ -238,5 +274,19 @@
     </a>
 
   </div>
+  <script>
+    const html = document.getElementById('html-root');
+    const btn  = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('mp-links-theme');
+    if (saved) html.dataset.theme = saved;
+    btn.textContent = html.dataset.theme === 'dark' ? 'Light' : 'Dark';
+
+    btn.addEventListener('click', function () {
+      const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+      html.dataset.theme = next;
+      localStorage.setItem('mp-links-theme', next);
+      btn.textContent = next === 'dark' ? 'Light' : 'Dark';
+    });
+  </script>
 </body>
 </html>
