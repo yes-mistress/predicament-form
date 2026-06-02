@@ -467,10 +467,10 @@
   </div>
 
   <script>
-    // ── Your personal form token ────────────────────────────────
-    // Find this in Settings → Lead Form inside the CRM.
-    // The token is case-insensitive so it works however it is shared.
+    // ── Config ──────────────────────────────────────────────────
+    // Find your token in Settings → Lead Form inside the CRM.
     const FORM_TOKEN = 'wm37r6g2tpyc';
+    const PROVIDER_EMAIL = 'MistressPredicament@gmail.com';
 
     const API_URL = 'https://wacrm-ebon.vercel.app/api/leads';
 
@@ -550,7 +550,9 @@
       } catch (err) {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit';
-        showError('Something went wrong. Please try again.');
+        showError(PROVIDER_EMAIL
+          ? `Something went wrong. Please try again, or contact ${PROVIDER_EMAIL} directly.`
+          : 'Something went wrong. Please try again.');
         console.error('[enquiry form]', err);
       }
     });
