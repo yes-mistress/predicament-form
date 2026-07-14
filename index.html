@@ -472,7 +472,7 @@
     const FORM_TOKEN = 'wm37r6g2tpyc';
     const PROVIDER_EMAIL = 'MistressPredicament@gmail.com';
 
-    const API_URL = 'https://wacrm-ebon.vercel.app/api/leads';
+    const API_URL = 'https://script.google.com/macros/s/AKfycby6fhWXbIS0tqBml_FpwkIau-UVYDXOIx5ew2yzoKWXn7V_HeCNawx6Mlowk8Vo81POBQ/exec';
 
     // ── Theme toggle ────────────────────────────────────────────
     const html        = document.documentElement;
@@ -525,7 +525,7 @@
       try {
         const res = await fetch(API_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             token: FORM_TOKEN,
             name,
